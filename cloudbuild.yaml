@@ -3,24 +3,21 @@ steps:
   - name: 'maven:3.8.5-openjdk-17'
     entrypoint: 'mvn'
     args: ['clean', 'package', '-DskipTests']
-    options:
-      logging: CLOUD_LOGGING_ONLY
+    logging: CLOUD_LOGGING_ONLY
 
   # 2. Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build', '-t', 'us-east1-docker.pkg.dev/gcp-training-v2/cts-repo-albin/spring-boot-app', '.'
     ]
-    options:
-      logging: CLOUD_LOGGING_ONLY
+    logging: CLOUD_LOGGING_ONLY
 
   # 3. Push Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push', 'us-east1-docker.pkg.dev/gcp-training-v2/cts-repo-albin/spring-boot-app'
     ]
-    options:
-      logging: CLOUD_LOGGING_ONLY
+    logging: CLOUD_LOGGING_ONLY
 
   # 4. Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -32,8 +29,7 @@ steps:
       '--platform', 'managed',
       '--allow-unauthenticated'
     ]
-    options:
-      logging: CLOUD_LOGGING_ONLY
+    logging: CLOUD_LOGGING_ONLY
 
 images:
   - 'us-east1-docker.pkg.dev/gcp-training-v2/cts-repo-albin/spring-boot-
