@@ -3,7 +3,6 @@ steps:
   - name: 'maven:3.8.5-openjdk-17'
     entrypoint: 'mvn'
     args: ['clean', 'package', '-DskipTests']
-    logsBucket: 'gs://mylogsbucket-albin'
     options:
       logging: CLOUD_LOGGING_ONLY
 
@@ -12,7 +11,6 @@ steps:
     args: [
       'build', '-t', 'us-east1-docker.pkg.dev/gcp-training-v2/cts-repo-albin/spring-boot-app', '.'
     ]
-    logsBucket: 'gs://mylogsbucket-albin'
     options:
       logging: CLOUD_LOGGING_ONLY
 
@@ -21,7 +19,6 @@ steps:
     args: [
       'push', 'us-east1-docker.pkg.dev/gcp-training-v2/cts-repo-albin/spring-boot-app'
     ]
-    logsBucket: 'gs://mylogsbucket-albin'
     options:
       logging: CLOUD_LOGGING_ONLY
 
@@ -35,7 +32,6 @@ steps:
       '--platform', 'managed',
       '--allow-unauthenticated'
     ]
-    logsBucket: 'gs://mylogsbucket-albin'
     options:
       logging: CLOUD_LOGGING_ONLY
 
