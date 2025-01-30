@@ -9,6 +9,8 @@ steps:
     args: [
       'build', '-t', 'us-east1-docker.pkg.dev/gcp-training-v2/cts-repo-albin/spring-boot-app', '.'
     ]
+  options:
+      logging: CLOUD_LOGGING_ONLY
 
   # 3. Push Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
