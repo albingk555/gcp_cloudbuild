@@ -26,7 +26,8 @@ steps:
       '--platform', 'managed',
       '--allow-unauthenticated'
     ]
-
+options:
+  logging: CLOUD_LOGGING_ONLY
 images:
   - 'us-east1-docker.pkg.dev/gcp-training-v2/cts-repo-albin/spring-boot-
 app'
